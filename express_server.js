@@ -18,6 +18,17 @@ var urlDatabase = {
 app.get('/', function(req, res) {
 
 });
+app.get("/urls/new", (req, res) => {
+  res.render("urls_new");
+});
+
+app.post("/urls", (req, res) => {
+  let shortenedURL = generateRandomString();
+  console.log(req.body);  // debug statement to see POST parameters
+  urlDatabase[shortenedURL] = req.body.longURL;
+  console.log(urlDatabase);
+  res.send(`${shortenedURL}`);         // Respond with 'Ok' (we will replace this)
+});
 
 app.get("/urls.json", (req, res) => {
   res.json(urlDatabase);
@@ -36,19 +47,14 @@ app.get("/urls/:id", (req, res) => {
 
   let templateVars = { shortURL: req.params.id };
   res.render("urls_show", templateVars);
+
 });
 
-app.get("/urls/new", (req, res) => {
-  res.render("urls_new");
-});
-
-app.post("/urls", (req, res) => {
-  console.log(req.body);  // debug statement to see POST parameters
-  res.send(generateRandomString());         // Respond with 'Ok' (we will replace this)
-});
 
 app.get("/u/:shortURL", (req, res) => {
-  let longURL =
+  let longURL = Object.keys(req);
+  console.log(req);
+  console.log(res);
   res.redirect(longURL);
 });
 
