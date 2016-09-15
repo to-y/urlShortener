@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <% include ../partials/_header %>
+  </head>
+
+    <body>
+
+      <table>
+
+      <table border cellpadding="1">
+      <table border cellspacing="1">
+
+        <tr>
+          <th>URL</th>
+          <th>Site Name</th>
+
+        </tr>
+        <tr>
+        <% for (var i in urls) { %>
+              <td><%= i %></td> <td><%= urls[i] %></td><tr></tr>
+          <% }; %>
+        </tr>
+      </table>
+
+        <br>
+        <br>
+        <br>
+        <a href=/shortenLink/ >You can shorten your URL too!</a>
+        <!-- <%= link_to(shortenLink,/shortenLink/) %> -->
+
+
+    </body>
+</html>
