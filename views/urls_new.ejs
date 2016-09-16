@@ -3,43 +3,44 @@
 
 <style type = "text/css">
 
-body {
-  background-color: #C7F3F3;
-  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  body {
+    background-color: #C7F3F3;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
+  content {
+    background: #fff;
+    border-radius: 6px;
+    color: #000;
+    display: table;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    padding: 20px 100px;
+    text-align: center;
+  }
 
-content {
-  background: #fff;
-  border-radius: 6px;
-  color: #000;
-  display: table;
-  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
-  padding: 20px 100px;
-  text-align: center;
-}
+  a.small:link {
+    font-size: 165px;
+    position: fixed;
+    top: -18%;
+    left: 9%;
+    text-decoration: none;
+  }
 
-table {
-    border-spacing: 0.5rem;
-    border-collapse: separate;
+  a.small:visited {
+    color: #000; background: #000; font-weight: bold;
+  }
 
-a.small:link {
-  font-size: 165px;
-  position: fixed;
-  top: -18%;
-  left: 9%;
-  text-decoration: none;
-}
+  a.small:active {
+    color: #000; background: #000; font-weight: bold;
+  }
 
-a.small:visited{color: #000; background: #000; font-weight: bold;}
-a.small:active {color: #000; background: #000; font-weight: bold;}
-a.small:hover {color: #fff; background: none; font-weight: bolder;}
-
-}
+  a.small:hover {
+    color: #fff; background: none; font-weight: bolder;
+  }
 
 </style>
 
@@ -47,15 +48,13 @@ a.small:hover {color: #fff; background: none; font-weight: bolder;}
 
   <content>
     <form action="/urls" method="POST">
-     <br>
+      <br>
       <label for="longURL"></label>
       <input id="longURL" type="text" name="longURL" value = "http://" style="width: 300px">
       <input type="submit" value="Littlr">
-
       <br>
       <br>
     </form>
   </content>
-
 
 </html>

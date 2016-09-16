@@ -3,72 +3,78 @@
 
 <style type = "text/css">
 
-body {
-  background-color: #C7F3F3;
-  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
+  body {
+    background-color: #C7F3F3;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
-content {
-  background: #fff;
-  border-radius: 6px;
-  color: #000;
-  display: table;
-  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
-  padding: 10px 10px;
-  text-align: center;
-}
+  content {
+    background: #fff;
+    border-radius: 6px;
+    color: #000;
+    display: table;
+    font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+    padding: 10px 10px;
+    text-align: center;
+  }
 
-table {
-    border-spacing: 70px 0.5rem ;
-    border-width: 1px
-    border-collapse: separate;
-    word-spacing:;
-}
+  table {
+      border-spacing: 70px 0.5rem ;
+      border-width: 1px
+      border-collapse: separate;
+      word-spacing:;
+  }
 
-button {
-  border: none;
-  font-size:20px;
-  color: #000;
-  background: none;
-}
+  button {
+    border: none;
+    font-size:20px;
+    color: #000;
+    background: none;
+  }
 
-a.edit:link{color: #000; background: none; font-weight: bold;}
-a.edit:visited{color: #000; background: #000; font-weight: bold;}
-a.edit:active {color: #000; background: #000; font-weight: bold;}
-a.edit:hover {color: #C7F3F3; background: none; font-weight: bolder;}
+  a.edit:link {
+    color: #000; background: none; font-weight: bold;
+  }
 
+  a.edit:visited {
+    color: #000; background: #000; font-weight: bold;
+  }
+
+  a.edit:active {
+    color: #000; background: #000; font-weight: bold;
+  }
+
+  a.edit:hover {
+    color: #C7F3F3; background: none; font-weight: bolder;
+  }
 
 </style>
 
 <% include ./partials/_header %>
 
   <body>
+    <content>
+      <table>
+        <tr></tr>
+        <tr>
+          <% for (var i in urls) { %>
+            <td><%= i %></td> <td><%= urls[i] %></td>
+            <td><a class = "edit" href=/urls/<%= i %>>Edit</a></td>
+            <td><form method="POST" action=/urls/<%= i %>?_method=DELETE>
+            <button type="submit"> × </button>
+            </form></td>
+          <tr></tr>
+          <% }; %>
+        </tr>
+      </table>
+    </content
+    <br>
+  </body>
 
-        <content>
-          <table>
-
-            <tr>
-            </tr>
-            <tr>
-
-            <% for (var i in urls) { %>
-              <td><%= i %></td> <td><%= urls[i] %></td>
-              <td><a class = "edit" href=/urls/<%= i %>>Edit</a></td>
-                <td><form method="POST" action=/urls/<%= i %>?_method=DELETE>
-                <button type="submit"> × </button>
-                </form></td>
-              <tr></tr>
-            <% }; %>
-
-            </tr>
-          </table>
-          </content
-      <br>
-
-    </body>
 </html>
+
 
