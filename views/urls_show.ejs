@@ -6,8 +6,12 @@
 
     <body>
 
+      <p>Littlr URL : <b><%= shortURL %></b></p>
 
-        <p><%= shortURL %></p>
+    <form action=/urls/<%= shortURL%>?_method=PUT method="POST">
+      <input id="changedURL" type="text" name="changedURL" value = <%= longURL %> style="width: 300px">
+      <button type="submit"> Change </button>
+    </form>
 
 
     </body>

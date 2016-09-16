@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <link rel="stylesheet" type ="text/css" href="./stylesheets/main.css" />
+
   <head>
   <% include ./partials/_header %>
   </head>
+
     <body style = "font-size:20px; padding:50px">
-      <table>
+    <div id = "container" >
+      <div id = "header" >
 
-      <table border cellpadding="1">
-      <table border cellspacing="1">
+      </div>
 
-        <tr>
-          <th>URL</th>
-          <th>Site Name</th>
+      <div id = "nav" >
+        <div id = "content" >
+          <table>
+          <table border cellpadding="1">
+          <table border cellspacing="1">
 
-        </tr>
-        <tr>
-        <% for (var i in urls) { %>
-              <td><%= i %></td> <td><%= urls[i] %></td><tr></tr>
-          <% }; %>
-        </tr>
-      </table>
+            <tr>
+              <th>URL</th>
+              <th>Site Name</th>
+            </tr>
+            <tr>
 
-        <br>
-        <br>
-        <br>
-        <a href=/urls/new >You can shorten your URL too!</a>
-        <!-- <%= link_to(shortenLink,/shortenLink/) %> -->
+            <% for (var i in urls) { %>
+              <td><%= i %></td> <td><%= urls[i] %></td>
+              <td><a href=/urls/<%= i %>>Edit</a></td>
+                <td><form method="POST" action=/urls/<%= i %>?_method=DELETE>
+                <button type="submit"> x </button>
+                </form></td>
+              <tr></tr>
+            <% }; %>
 
+            </tr>
+          </table>
+      </div>
+      <br>
+      <a href=/urls/new >Make Littlr</a>
 
     </body>
 </html>
+
