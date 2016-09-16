@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
 
-  </head>
+<style type = "text/css">
 
+body {
+  background-color: #C7F3F3;
+  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+content {
+  background: #fff;
+  border-radius: 6px;
+  color: #000;
+  display: table;
+  font: 14px/24px "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
+  padding: 20px 100px;
+  text-align: center;
+}
+
+a.original:link{color: #000; background: none; font-weight: bold;}
+a.original:visited{color: #000; background: #000; font-weight: bold;}
+a.original:active {color: #000; background: #000; font-weight: bold;}
+a.original:hover {color: #C7F3F3; background: none; font-weight: bolder;}
+
+</style>
+    <% include partials/_header3 %>
     <body>
 
-      <p>Littlr URL : <b><%= shortURL %></b></p>
+      <content>
+      <form action=/urls/<%= shortURL%>?_method=PUT method="POST">
+        <input id="changedURL" type="text" name="changedURL" value = <%= longURL %> style="width: 300px">
+        <button type="submit"> Modify </button>
+      </form>
+      <a class = "original" href = "<%= longURL %>" ><%= shortURL %></a>
 
-    <form action=/urls/<%= shortURL%>?_method=PUT method="POST">
-      <input id="changedURL" type="text" name="changedURL" value = <%= longURL %> style="width: 300px">
-      <button type="submit"> Change </button>
-    </form>
-
+      </content>
 
     </body>
 </html>
