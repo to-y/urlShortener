@@ -61,14 +61,18 @@
       <table>
         <tr></tr>
         <tr>
-          <% for (var i in urls) { %>
-            <td><%= i %></td> <td><%= urls[i] %></td>
-            <td><a class = "edit" href=/urls/<%= i %>>Edit</a></td>
-            <td><form method="POST" action=/urls/<%= i %>?_method=DELETE>
-            <button type="submit"> × </button>
-            </form></td>
+
+          <% for (var url of urls) { %>
+          <td><%= url.shortURL %> </td>
+          <td> <%= url.longURL %> </td>
+          <td><a class = "edit" href=/urls/<%= url.shortURL %>>Edit</a></td>
+          <td><form method="POST" action=/urls/<%= url.shortURL %>?_method=DELETE>
+          <button type="submit"> × </button>
+          </form></td>
           <tr></tr>
           <% }; %>
+
+
         </tr>
       </table>
     </content
