@@ -3,7 +3,7 @@
 //import mongo
 const MongoClient = require("mongodb").MongoClient;
 //define loopback to connect to and name of the database
-const MONGODB_URI = "mongodb://127.0.0.1:27017/url_shortener";
+const MONGODB_URI = process.env.MONGODB_URI;
 //define name of collection within database
 const collection_name = "urls";
 

@@ -1,11 +1,14 @@
 "use strict";
 
+require('dotenv').config();
+
 const mongo = require('./mongo_connect.js')
 const express = require('express');
 const app = express();
 const helpers = require('express-helpers')(app);
 const bodyParser = require("body-parser");
-const methodOverride = require('express-method-override')
+const methodOverride = require('express-method-override');
+
 
 // default port 8080
 const PORT = process.env.PORT || 8080;

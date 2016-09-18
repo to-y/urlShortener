@@ -1,4 +1,5 @@
 .DS_Store
+.env
 app.js
 test.js
 node-ejs
