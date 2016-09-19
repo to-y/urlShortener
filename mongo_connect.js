@@ -1,5 +1,7 @@
 "use strict";
 
+require('dotenv').config();
+
 //import mongo
 const MongoClient = require("mongodb").MongoClient;
 //define loopback to connect to and name of the database

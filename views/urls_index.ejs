@@ -63,7 +63,7 @@
         <tr>
 
           <% for (var url of urls) { %>
-          <td><%= url.shortURL %> </td>
+          <td><a class = "edit" href=/<%= url.shortURL %>> <%= url.shortURL %> </a></td>
           <td> <%= url.longURL %> </td>
           <td><a class = "edit" href=/urls/<%= url.shortURL %>>Edit</a></td>
           <td><form method="POST" action=/urls/<%= url.shortURL %>?_method=DELETE>
