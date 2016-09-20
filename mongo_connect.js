@@ -63,10 +63,10 @@ module.exports = {
   //function to insert new long url into collection
   //@params new long url name
   //@adds new object into collection
-  insert: function(newLongURL, cb) {
+  insert: function(url, newLongURL, cb) {
     this.db(function(err, db) {
       if (err) return cb(err);
-      db.collection(collection_name).insert(newLongURL, cb);
+      db.collection(collection_name).insert({"shortURL": url, "longURL": newLongURL}, cb);
     });
   },
 

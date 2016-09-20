@@ -56,11 +56,27 @@ app.get("/urls/new", (req, res) => {
 //redirects to a new url/:id page
 app.post("/urls", (req, res) => {
   let shortenedURL = generateRandomString();
-  mongo.insert({shortURL: shortenedURL, longURL: req.body.longURL}, (err) => {
+  let newURL = req.body.longURL;
+  mongo.insert(shortenedURL, newURL, (err) => {
     if (err) return res.redirect("urls/new");
     res.redirect(`/urls/${shortenedURL}`);
   })
 });
+
+//:id is essentially whatever the user decides to put behind /urls/
+//req.params.id means whatever is in the request url. parameters of these requests and id refers to whatever behind the :
+//req.query would be such as /urls?:whatever
+//then renders the parameters from the ID and displays it in urls_show as shortURL in urls_show
+app.get("/urls/:id", (req, res) => {
+  let shortURL = req.params.id;
+  mongo.get(shortURL, (err, urlData) => {
+    if (err) return (err);
+    res.render("urls_show", {
+      shortURL: shortURL,
+      longURL: urlData.longURL
+    })
+  })
+})
 
 //deletes using id call from urls/:id => inputted by user on address bar
 //so request parameters named id
@@ -77,31 +93,17 @@ app.delete("/urls/:id", (req, res) => {
 //redirect to home page
 app.put("/urls/:id", (req, res) => {
   let changes = req.body.changedURL;
-  mongo.update(req.params.id, changes, (err) => {
+  let shortURL = req.params.id;
+  mongo.update(shortURL, changes, (err) => {
     if (err) return (err);
     res.redirect("/urls");
   })
-  });
-
-//:id is essentially whatever the user decides to put behind /urls/
-//req.params.id means whatever is in the request url. parameters of these requests and id refers to whatever behind the :
-//req.query would be such as /urls?:whatever
-//then renders the parameters from the ID and displays it in urls_show as shortURL in urls_show
-app.get("/urls/:id", (req, res) => {
-  mongo.get(req.params.id, (err, urlData) => {
-    let shortURL = req.params.id;
-    if (err) return (err);
-    res.render("urls_show", {
-      shortURL: shortURL,
-      longURL: urlData.longURL
-    })
-  })
-})
+});
 
 //takes short url id inputted by user into address bar and sticks it into get in mongo
 //redirects to 404 if short url does not exist
 //else redirect status and goes to the longURL found in urlData object from database
-app.get("/:shortURL", (req, res) => {
+app.get("/u/:shortURL", (req, res) => {
   let short = req.params.shortURL;
   mongo.get(short, (err, urlData) => {
     if (!urlData) {
